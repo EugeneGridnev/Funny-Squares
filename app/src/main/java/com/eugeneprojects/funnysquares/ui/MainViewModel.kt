@@ -1,17 +1,22 @@
 package com.eugeneprojects.funnysquares.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.eugeneprojects.funnysquares.model.Squares
 import kotlin.random.Random
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
-    private val _squares = MutableLiveData<Squares>()
+    private val _squares = savedStateHandle.getLiveData<Squares>(KEY_SQUARES)
     val squares: LiveData<Squares> = _squares
 
     init {
+        if (!savedStateHandle.contains(KEY_SQUARES)) {
+            savedStateHandle[KEY_SQUARES] = createSquares()
+        }
         generateSquares()
     }
 
@@ -24,5 +29,9 @@ class MainViewModel : ViewModel() {
             size = Random.nextInt(5, 11),
             colorProducer = { -Random.nextInt(0xFFFFFF) }
         )
+    }
+
+    companion object {
+        const val KEY_SQUARES = "squares"
     }
 }
