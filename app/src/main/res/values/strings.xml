@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Funny Squares</string>
+    <string name="generate_colors">Генерим цвета</string>
 </resources>
