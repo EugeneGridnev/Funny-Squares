@@ -1,14 +1,14 @@
 package com.eugeneprojects.funnysquares.model
 
-class Square private constructor(
+class Squares private constructor(
     val size: Int,
     val colors: List<Int>
 ) {
   constructor(
       size: Int,
-      colorsProducer: () -> Int
+      colorProducer: () -> Int
   ) : this(
       size = size,
-      colors = (1..size*size).map { colorsProducer() }
+      colors = (1..size*size).map { colorProducer() }
   )
 }
