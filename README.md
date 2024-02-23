@@ -8,4 +8,4 @@
 
 ## Гифка пример:
 
-![](https://github.com/EugeneGridnev/Funny-Squares/blob/master/squares.gif)
+<p align = "center"> <img src = "https://github.com/EugeneGridnev/Funny-Squares/blob/master/squares.gif"> </p>
